@@ -41,8 +41,8 @@ Development-of-an-intelligent-chatbot/
 1. Клонируйте репозиторий:
 
 ```bash
-   git clone https://github.com/Dmitry505/Academy_Effective
-   cd Academy_Effective/lab_1
+   git clone https://github.com/Dmitry505/Development-of-an-intelligent-chatbot
+   cd Development-of-an-intelligent-chatbot/rag_skeleton
 ```
    
 2. Установите зависимости:
