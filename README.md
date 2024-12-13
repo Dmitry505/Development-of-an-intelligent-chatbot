@@ -6,7 +6,7 @@
 Модель выдаёт нормальные ответы за счёт достаточного мощьного llm, но сам rag работает плохо и больше мешает чем помогает
 
 ## Структура
-
+```bash
 Development-of-an-intelligent-chatbot/
 │
 ├── notebooks/
@@ -16,7 +16,7 @@ Development-of-an-intelligent-chatbot/
 ├── data/
 │   └── processed_data/             - Обработанные вектора из preprocessing.ipynb
 │   └── standard_data/              - Книги для раг
-
+```
 ## Теория
 
 Общая информация находится в этой статье:  https://www.datacamp.com/tutorial/llama-3-1-rag#rdl
