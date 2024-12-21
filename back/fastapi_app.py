@@ -8,11 +8,18 @@ from back.config import init_settings
 from back.src.init_container import init_container
 from back.src.routing.user_message_router import message_router
 
+from back.src.exception.exception_models.models import VectorStoreError, LanguageModelError
+from back.src.exception.exceptions import vector_store_error_handler, language_model_error_handler, general_error_handler
+
 
 async def fastapi_app(container: DeclarativeContainer, settings: BaseSettings):
     app = FastAPI()
 
     app.include_router(message_router(container))
+
+    app.add_exception_handler(LanguageModelError, language_model_error_handler)
+    app.add_exception_handler(VectorStoreError, vector_store_error_handler)
+    app.add_exception_handler(Exception, general_error_handler)
 
     config = uvicorn.Config(
         app,
@@ -26,5 +33,5 @@ async def fastapi_app(container: DeclarativeContainer, settings: BaseSettings):
 
 if __name__ == '__main__':
     base_settings: BaseSettings = init_settings()
-    base_container: DeclarativeContainer = init_container(set)
+    base_container: DeclarativeContainer = init_container(settings=base_settings)
     asyncio.run(fastapi_app(base_container, base_settings))
