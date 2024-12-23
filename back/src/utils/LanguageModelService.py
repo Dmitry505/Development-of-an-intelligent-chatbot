@@ -4,7 +4,7 @@ from langchain_ollama import ChatOllama
 from langchain.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
-from back.src.exception.exception_models.models import LanguageModelError
+from src.exception.exception_models.models import LanguageModelError
 
 
 class LanguageModelService:

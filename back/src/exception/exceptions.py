@@ -1,7 +1,7 @@
 import logging
 from fastapi import Request
 from fastapi.responses import JSONResponse
-from back.src.exception.exception_models.models import VectorStoreError, LanguageModelError
+from src.exception.exception_models.models import VectorStoreError, LanguageModelError
 
 
 logger = logging.getLogger(__name__)

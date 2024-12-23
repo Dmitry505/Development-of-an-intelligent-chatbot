@@ -1,11 +1,11 @@
-from back.src.utils.VectorStoreService import VectorStoreService
-from back.src.utils.LanguageModelService import LanguageModelService
+from src.utils.VectorStoreService import VectorStoreService
+from src.utils.LanguageModelService import LanguageModelService
 
-from back.src.services.interfaces.IModelService import IModelService
+from src.services.interfaces.IModelService import IModelService
 
-from back.src.exception.exception_models.models import LanguageModelError, VectorStoreError
+from src.exception.exception_models.models import LanguageModelError, VectorStoreError
 
-from back.src.schemas.message import Message
+from src.schemas.message import Message
 
 
 class QuestionAnsweringService(IModelService):

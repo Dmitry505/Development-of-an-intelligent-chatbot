@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from back.src.schemas.message import Message
+from src.schemas.message import Message
 
 
 class IModelService(ABC):

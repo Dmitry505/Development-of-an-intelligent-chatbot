@@ -1,9 +1,9 @@
 from dependency_injector import containers, providers
 from pathlib import Path
 
-from back.src.utils.VectorStoreService import VectorStoreService
-from back.src.utils.LanguageModelService import LanguageModelService
-from back.src.services.QuestionAnsweringService import QuestionAnsweringService
+from src.utils.VectorStoreService import VectorStoreService
+from src.utils.LanguageModelService import LanguageModelService
+from src.services.QuestionAnsweringService import QuestionAnsweringService
 
 
 def init_container(settings):

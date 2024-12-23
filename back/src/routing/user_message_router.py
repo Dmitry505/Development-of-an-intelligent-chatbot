@@ -1,8 +1,8 @@
 from dependency_injector.containers import DeclarativeContainer
 from fastapi import APIRouter, Path
 
-from back.src.schemas.message import Message
-from back.src.services.interfaces.IModelService import IModelService
+from src.schemas.message import Message
+from src.services.interfaces.IModelService import IModelService
 
 
 def message_router(container: DeclarativeContainer) -> APIRouter:

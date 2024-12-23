@@ -4,7 +4,7 @@ from langchain_ollama import OllamaEmbeddings
 import asyncio
 from typing import List
 
-from back.src.exception.exception_models.models import VectorStoreError
+from src.exception.exception_models.models import VectorStoreError
 
 
 class VectorStoreService:

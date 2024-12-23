@@ -4,12 +4,12 @@ from fastapi import FastAPI
 from dependency_injector.containers import DeclarativeContainer
 from pydantic_settings import BaseSettings
 
-from back.config import init_settings
-from back.src.init_container import init_container
-from back.src.routing.user_message_router import message_router
+from config import init_settings
+from src.init_container import init_container
+from src.routing.user_message_router import message_router
 
-from back.src.exception.exception_models.models import VectorStoreError, LanguageModelError
-from back.src.exception.exceptions import vector_store_error_handler, language_model_error_handler, general_error_handler
+from src.exception.exception_models.models import VectorStoreError, LanguageModelError
+from src.exception.exceptions import vector_store_error_handler, language_model_error_handler, general_error_handler
 
 
 async def fastapi_app(container: DeclarativeContainer, settings: BaseSettings):
