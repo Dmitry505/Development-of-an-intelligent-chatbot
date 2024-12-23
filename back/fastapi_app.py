@@ -10,11 +10,18 @@ from src.routing.user_message_router import message_router
 
 from src.exception.exception_models.models import VectorStoreError, LanguageModelError
 from src.exception.exceptions import vector_store_error_handler, language_model_error_handler, general_error_handler
+from fastapi.middleware.cors import CORSMiddleware
 
 
 async def fastapi_app(container: DeclarativeContainer, settings: BaseSettings):
     app = FastAPI()
-
+    app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],  
+    allow_headers=["*"], 
+)
     app.include_router(message_router(container))
 
     app.add_exception_handler(LanguageModelError, language_model_error_handler)
