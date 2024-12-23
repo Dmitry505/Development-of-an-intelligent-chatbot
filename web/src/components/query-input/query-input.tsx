@@ -1,27 +1,35 @@
-import { useState } from 'react';
-import styles from './query-input.module.scss';
-import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
-import axios from 'axios';
+import { FC, useState } from "react";
+import styles from "./query-input.module.scss";
+import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
+import { client } from "../../constants";
+import { CircularProgress } from "@mui/material";
 
-export const QueryInput = () => {
-    const [query, setQuery] = useState('');
+type QueryInputPropsType = {
+    addMessage: (message: string, isUser: boolean) => void;
+};
+export const QueryInput: FC<QueryInputPropsType> = ({ addMessage }) => {
+    const [query, setQuery] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!query) return;
 
+        addMessage(query, true);
+
         try {
-            const response = await axios.post('api', {
-                query,
-            });
-
-            console.log(response.data); 
+            setQuery("");
+            setIsLoading(true);
+            const response = await client.get(`/user_message/${query}`);
+            const botMessage =
+                response.data?.text || "Ответ от сервера отсутствует";
+            addMessage(botMessage, false);
         } catch (error) {
-            console.error('Ошибка:', error);
-
+            console.error("Ошибка:", error);
+            addMessage("Произошла ошибка при обработке запроса", false);
+        } finally {
+            setIsLoading(false);
         }
-        setQuery(''); 
-
     };
 
     return (
@@ -32,8 +40,16 @@ export const QueryInput = () => {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
             />
-            <button className={styles.queryButton} type="submit">
-                <ArrowUpwardIcon className={styles.queryArrow} />
+            <button
+                disabled={isLoading}
+                className={styles.queryButton}
+                type="submit"
+            >
+                {isLoading ? (
+                    <CircularProgress size={24} style={{ color: "white" }} />
+                ) : (
+                    <ArrowUpwardIcon className={styles.queryArrow} />
+                )}
             </button>
         </form>
     );

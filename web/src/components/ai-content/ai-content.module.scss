@@ -1,6 +1,26 @@
-.aiContent{
-    
-    border: 3px solid blue;
-    width:100%;
-    height:100%;
+.aiContent {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    max-height: 500px;
+    overflow-y: auto;
+    width: 100vw;
+}
+
+.message {
+    padding: 10px;
+    border-radius: 5px;
+    max-width: 60%;
+    word-wrap: break-word;
+}
+
+.userMessage {
+    align-self: flex-end;
+    background-color: #e0f7fa;
+}
+
+.botMessage {
+    align-self: flex-start;
+    background-color: #f1f8e9;
 }

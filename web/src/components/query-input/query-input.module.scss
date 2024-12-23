@@ -1,9 +1,9 @@
-.query{
+.query {
     display: flex;
     align-items: center;
     width: 100%;
     margin-top: 20px;
-
+    padding: 5px;
 }
 
 .queryInput {
@@ -37,4 +37,8 @@
     &:active {
         transform: scale(0.95);
     }
+}
+
+.loader {
+    color: white;
 }
